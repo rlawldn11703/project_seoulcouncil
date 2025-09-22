@@ -1,0 +1,13 @@
+{
+  "name": "@project-seoulcouncil/shared-types",
+  "version": "1.0.0",
+  "description": "공유 타입 정의",
+  "main": "index.ts",
+  "types": "index.ts",
+  "exports": {
+    ".": "./index.ts"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

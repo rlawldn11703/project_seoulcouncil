@@ -1,0 +1,12 @@
+apps/backend
+packages
+tools
+docs
+*.pyc
+__pycache__
+.env.local
+.env
+node_modules
+.git
+README.md
+guidelines

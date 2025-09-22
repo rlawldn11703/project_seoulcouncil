@@ -1,8 +1,8 @@
 import { UserPreferences, Agenda, AgendasResponse, FilterOptions, ApiError } from './types';
 
 // 환경 설정
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://gaji.ai.kr/api';
-const IS_DEVELOPMENT = process.env.REACT_APP_ENVIRONMENT !== 'production';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
+const IS_DEVELOPMENT = import.meta.env.VITE_ENVIRONMENT !== 'production';
 
 // 임시 목업 데이터
 const mockAgendas: Agenda[] = [
