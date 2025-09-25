@@ -1,7 +1,7 @@
 import { UserPreferences, Agenda, AgendasResponse, FilterOptions, ApiError } from './types';
 
-// 환경 설정
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
+// 환경 설정 (Vite 방식)
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://gaji.ai.kr/api';
 const IS_DEVELOPMENT = import.meta.env.VITE_ENVIRONMENT !== 'production';
 
 // 임시 목업 데이터
@@ -15,7 +15,8 @@ const mockAgendas: Agenda[] = [
     district: "서울 동작구",
     date: "2024.01.15",
     category: "교통",
-    fullContent: '동작구의회는 제1차 정례회에서 주택가 주차장 확충 사업을 만장일치로 가결했다. 이번 사업은 상도동 3개소, 노량진동 2개소에 총 150대 규모의 공영주차장을 신설하는 내용이다. 구의회 교통위원회는 "지역 주민들의 오랜 숙원사업이었던 주차난 해소에 큰 도움이 될 것"이라고 밝혔다.',
+    fullContent: '동작구의회는 제1차 정례회에서 주택가 주차장 확충 사업에 대한 예산안을 만장일치로 가결했다. 이번 사업은 상도동 3개소, 노량진동 2개소에 총 150대 규모의 공영주차장을 신설하는 내용이다. 총 사업비는 12억원으로, 토지매입비 8억원, 시설비 4억원으로 구성된다. 구의회 교통위원회는 "지역 주민들의 오랜 숙원사업이었던 주차난 해소에 큰 도움이 될 것"이라고 밝혔다.',
+    originalUrl: "https://dongjak.go.kr/council/agenda/2024/001", // 원문 URL 추가
   },
   {
     id: "2",
@@ -27,7 +28,7 @@ const mockAgendas: Agenda[] = [
     date: "2024.01.12",
     category: "복지",
     fullContent: "동작구의회는 흑석동 일대 5개 어린이 놀이터의 안전시설 개선사업을 승인했다. 10년 이상 된 노후 놀이기구를 최신 안전기준에 맞춰 교체하고, 놀이구역 주변에 안전펜스를 추가로 설치한다. 또한 놀이터 바닥재를 충격흡수 소재로 교체하여 어린이들의 안전을 강화한다.",
-
+    // originalUrl 없음 - "원문이 제공되지 않는 컨텐츠입니다" 표시
   },
   {
     id: "3",
@@ -39,7 +40,7 @@ const mockAgendas: Agenda[] = [
     date: "2024.01.10",
     category: "환경",
     fullContent: "상도로 일대 1.2km 구간의 보도를 기존 1.5m에서 2.0m로 확장하고, 노후된 가로수 80그루를 새로 식재한다. 보행자와 자전거 이용자의 안전을 위해 별도의 자전거 도로도 신설할 예정이다.",
-
+    originalUrl: "https://dongjak.go.kr/council/agenda/2024/003",
   },
   {
     id: "4",
@@ -50,9 +51,12 @@ const mockAgendas: Agenda[] = [
     district: "서울 동작구",
     date: "2024.01.08",
     category: "교육",
-    fullContent: "사당동 공공도서관의 운영시간을 기존 평일 오후 6시에서 오후 10시까지, 주말은 오후 5시에서 오후 8시까지 연장하기로 결정했다.",
-  },
+    fullContent: "사당동 공공도서관의 운영시간을 확대하여 지역주민의 평생학습 기회를 늘리기로 했다. 기존 평일 오후 6시, 주말 오후 5시에서 각각 오후 10시, 오후 8시로 연장한다. 야간 이용자를 위한 보안시설도 함께 강화할 예정이다.",
+    // originalUrl 없음
+  }
 ];
+
+// ...existing code...
 
 // API 헬퍼 함수
 async function apiRequest<T>(endpoint: string, options: RequestInit = {}): Promise<T> {

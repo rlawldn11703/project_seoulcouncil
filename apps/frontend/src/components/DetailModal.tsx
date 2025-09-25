@@ -6,21 +6,6 @@ import { ImpactBadge } from './ImpactBadge'
 import { Separator } from './ui/separator'
 
 interface DetailModalProps {
-  agenda: {
-    id: string;
-    title: string;
-    summary: string;
-    impact: 'high' | 'medium' | 'low';
-    district: string;
-    date: string;
-    category: string;
-    fullContent: string;
-  };
-  isOpen: boolean;
-  onClose: () => void;
-}
-
-interface DetailModalProps {
   isOpen: boolean
   onClose: () => void
   agenda: {
@@ -32,18 +17,22 @@ interface DetailModalProps {
     date: string
     category: string
     fullContent: string
-    budget?: string
-    implementationDate?: string
-    relatedDepartment?: string
+    originalUrl?: string
   } | null
 }
 
 export function DetailModal({ isOpen, onClose, agenda }: DetailModalProps) {
   if (!agenda) return null
+
+  const handleOriginalUrlClick = () => {
+    if (agenda.originalUrl) {
+      window.open(agenda.originalUrl, '_blank', 'noopener,noreferrer')
+    }
+  }
   
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto bg-white">
         <DialogHeader className="space-y-3">
           <div className="flex items-start justify-between">
             <div className="flex-1 pr-4">
@@ -79,36 +68,49 @@ export function DetailModal({ isOpen, onClose, agenda }: DetailModalProps) {
               내 삶에 미치는 영향
             </h4>
             <p className="text-sm text-orange-800 leading-relaxed">
-              이 안건은 지역 주민들의 일상생활에 직접적인 영향을 미칠 수 있습니다.
+              {agenda.impactDescription}
             </p>
           </div>
           
           {/* 요약 */}
-          <div>
+          <div className="border border-gray-200 rounded-lg p-4">
             <h4 className="font-semibold mb-2">📋 안건 요약</h4>
             <p className="text-sm text-muted-foreground leading-relaxed">
               {agenda.summary}
             </p>
           </div>
           
-
-          
           <Separator />
           
           {/* 전문 보기 */}
-          <div>
+          <div className="border border-gray-200 rounded-lg p-4">
             <h4 className="font-semibold mb-3">📄 회의록 전문</h4>
-            <div className="bg-muted/50 rounded-lg p-4 text-sm leading-relaxed">
+            <div className="bg-muted/50 rounded-lg p-4 text-sm leading-relaxed border border-gray-100">
               {agenda.fullContent}
             </div>
           </div>
           
           {/* 액션 버튼 */}
           <div className="flex flex-col sm:flex-row gap-3 pt-4">
-            <Button className="flex-1" variant="outline">
-              <ExternalLink className="w-4 h-4 mr-2" />
-              원문 보기
-            </Button>
+            {agenda.originalUrl ? (
+              <Button 
+                className="flex-1" 
+                variant="outline"
+                onClick={handleOriginalUrlClick}
+              >
+                <ExternalLink className="w-4 h-4 mr-2" />
+                원문 보기
+              </Button>
+            ) : (
+              <Button 
+                className="flex-1" 
+                variant="outline" 
+                disabled
+              >
+                <ExternalLink className="w-4 h-4 mr-2 opacity-50" />
+                원문이 제공되지 않는 컨텐츠입니다
+              </Button>
+            )}
           </div>
         </div>
       </DialogContent>
