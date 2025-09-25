@@ -31,8 +31,8 @@ export function DetailModal({ isOpen, onClose, agenda }: DetailModalProps) {
   
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-3xl max-h-[92vh] overflow-hidden bg-white border-0 shadow-2xl">
-        <DialogHeader className="space-y-4 pb-6">
+      <DialogContent className="max-w-3xl max-h-[92vh] flex flex-col bg-white border-0 shadow-2xl">
+        <DialogHeader className="space-y-4 pb-6 flex-shrink-0">
           <div className="flex items-start justify-between">
             <div className="flex-1">
               <div className="flex items-center space-x-3 mb-3">
@@ -62,8 +62,8 @@ export function DetailModal({ isOpen, onClose, agenda }: DetailModalProps) {
           </div>
         </DialogHeader>
         
-        <div className="overflow-y-auto flex-1 px-1">
-          <div className="space-y-6">
+        <div className="overflow-y-auto flex-1 px-1 min-h-0">
+          <div className="space-y-6 pb-4">
             {/* 영향도 분석 */}
             <div className="bg-gradient-to-br from-amber-50 via-orange-50 to-red-50 rounded-xl p-6 border border-orange-200/50 shadow-sm">
               <div className="flex items-center mb-3">
@@ -106,7 +106,7 @@ export function DetailModal({ isOpen, onClose, agenda }: DetailModalProps) {
         </div>
           
         {/* 액션 버튼 - Fixed position at bottom */}
-        <div className="border-t bg-white p-6">
+        <div className="border-t bg-white p-6 flex-shrink-0">
           <div className="flex flex-col sm:flex-row gap-3">
             {agenda.originalUrl ? (
               <Button 
