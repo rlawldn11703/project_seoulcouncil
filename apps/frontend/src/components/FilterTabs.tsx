@@ -28,7 +28,7 @@ export function FilterTabs({ activeTab, onTabChange }: FilterTabsProps) {
             <TabsTrigger 
               key={tab.value} 
               value={tab.value}
-              className="text-xs lg:text-sm whitespace-nowrap data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+              className="text-xs lg:text-sm whitespace-nowrap data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-600 data-[state=active]:to-indigo-600 data-[state=active]:text-white"
             >
               <span>{tab.label}</span>
               <Badge variant="secondary" className="ml-2 text-xs px-1.5 py-0">

@@ -30,7 +30,7 @@ export function AgendaCard({
         <div className="flex items-start justify-between">
           <div className="flex-1">
             <div className="flex items-center space-x-2 mb-2">
-              <Badge variant="outline" className="text-xs">
+              <Badge variant="outline" className="text-xs bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-700 border-blue-200">
                 {category}
               </Badge>
               <ImpactBadge level={impact} />
@@ -61,7 +61,7 @@ export function AgendaCard({
               <span>{date}</span>
             </div>
           </div>
-          <div className="flex items-center space-x-1 text-primary">
+          <div className="flex items-center space-x-1 text-blue-600">
             <span className="text-sm font-medium">상세보기</span>
             <ChevronRight className="h-3 w-3" />
           </div>
