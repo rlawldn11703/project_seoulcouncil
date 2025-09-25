@@ -128,7 +128,6 @@ export function DetailModal({ isOpen, onClose, agenda }: DetailModalProps) {
             )}
           </div>
         </div>
-        </div>
       </DialogContent>
     </Dialog>
   )
