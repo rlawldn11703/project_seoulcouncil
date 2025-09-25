@@ -38,7 +38,7 @@ export function DetailModal({ isOpen, onClose, agenda }: DetailModalProps) {
               <div className="flex items-center space-x-3 mb-3">
                 <Badge 
                   variant="secondary" 
-                  className="px-3 py-1 text-xs font-medium bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-700 border-0"
+                  className="px-3 py-1 text-xs font-medium bg-gradient-to-r from-purple-100 to-violet-100 text-purple-700 border-0"
                 >
                   {agenda.category}
                 </Badge>
@@ -110,7 +110,7 @@ export function DetailModal({ isOpen, onClose, agenda }: DetailModalProps) {
           <div className="flex flex-col sm:flex-row gap-3">
             {agenda.originalUrl ? (
               <Button 
-                className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white border-0 shadow-md" 
+                className="flex-1 bg-gradient-to-r from-purple-400 to-violet-400 hover:from-purple-500 hover:to-violet-500 text-white border-0 shadow-md" 
                 onClick={handleOriginalUrlClick}
               >
                 <ExternalLink className="w-4 h-4 mr-2" />
