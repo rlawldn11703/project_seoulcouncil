@@ -1,9 +1,24 @@
-import { Calendar, MapPin, Users, Clock, ExternalLink } from 'lucide-react'
+import { Calendar, MapPin, ExternalLink } from 'lucide-react'
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from './ui/dialog'
 import { Button } from './ui/button'
 import { Badge } from './ui/badge'
 import { ImpactBadge } from './ImpactBadge'
 import { Separator } from './ui/separator'
+
+interface DetailModalProps {
+  agenda: {
+    id: string;
+    title: string;
+    summary: string;
+    impact: 'high' | 'medium' | 'low';
+    district: string;
+    date: string;
+    category: string;
+    fullContent: string;
+  };
+  isOpen: boolean;
+  onClose: () => void;
+}
 
 interface DetailModalProps {
   isOpen: boolean
@@ -64,7 +79,7 @@ export function DetailModal({ isOpen, onClose, agenda }: DetailModalProps) {
               내 삶에 미치는 영향
             </h4>
             <p className="text-sm text-orange-800 leading-relaxed">
-              {agenda.impactDescription}
+              이 안건은 지역 주민들의 일상생활에 직접적인 영향을 미칠 수 있습니다.
             </p>
           </div>
           
@@ -76,40 +91,7 @@ export function DetailModal({ isOpen, onClose, agenda }: DetailModalProps) {
             </p>
           </div>
           
-          <Separator />
-          
-          {/* 상세 정보 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {agenda.budget && (
-              <div className="space-y-2">
-                <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                  <span className="font-medium text-sm">예산 규모</span>
-                </div>
-                <p className="text-sm text-muted-foreground pl-4">{agenda.budget}</p>
-              </div>
-            )}
-            
-            {agenda.implementationDate && (
-              <div className="space-y-2">
-                <div className="flex items-center space-x-2">
-                  <Clock className="w-4 h-4 text-green-600" />
-                  <span className="font-medium text-sm">시행 예정일</span>
-                </div>
-                <p className="text-sm text-muted-foreground pl-6">{agenda.implementationDate}</p>
-              </div>
-            )}
-            
-            {agenda.relatedDepartment && (
-              <div className="space-y-2">
-                <div className="flex items-center space-x-2">
-                  <Users className="w-4 h-4 text-purple-600" />
-                  <span className="font-medium text-sm">담당 부서</span>
-                </div>
-                <p className="text-sm text-muted-foreground pl-6">{agenda.relatedDepartment}</p>
-              </div>
-            )}
-          </div>
+
           
           <Separator />
           

@@ -1,0 +1,40 @@
+{
+  "name": "project-seoulcouncil",
+  "version": "1.0.0",
+  "description": "서울시의회 정보 플랫폼 - 모노레포",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=apps/frontend",
+    "build": "npm run build --workspace=apps/frontend",
+    "build:frontend": "npm run build --workspace=apps/frontend",
+    "build:backend": "cd apps/backend && pip install -r requirements.txt",
+    "dev:frontend": "npm run dev --workspace=apps/frontend",
+    "dev:backend": "cd apps/backend && uvicorn app.main:app --reload",
+    "preview": "npm run preview --workspace=apps/frontend",
+    "lint": "npm run lint --workspace=apps/frontend",
+    "clean": "rm -rf apps/*/dist apps/*/node_modules packages/*/dist packages/*/node_modules",
+    "install:all": "npm install && npm install --workspace=apps/frontend"
+  },
+  "keywords": [
+    "seoul",
+    "council",
+    "government",
+    "transparency",
+    "react",
+    "fastapi",
+    "monorepo"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
